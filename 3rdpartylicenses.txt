@@ -91,6 +91,9 @@ MIT
 @flywine93/ngx-autounsubscrb
 MIT
 
+@flywine93/ngx-notification
+MIT
+
 core-js
 MIT
 Copyright (c) 2014-2020 Denis Pushkarev
@@ -113,8 +116,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-
-ngx-notification
 
 regenerator-runtime
 MIT
