@@ -1,6 +1,6 @@
 {
   "name": "@flywine93/ngx-notification",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "dependencies": {
     "@flywine93/ngx-autounsubscrb": "*"
   },
