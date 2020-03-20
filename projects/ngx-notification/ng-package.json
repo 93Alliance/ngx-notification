@@ -1,0 +1,13 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/ngx-notification",
+  "lib": {
+    "entryFile": "src/public-api.ts",
+    "umdModuleIds": {
+      "@flywine93/ngx-autounsubscrb": "@flywine93/ngx-autounsubscrb"
+    }
+  },
+  "whitelistedNonPeerDependencies": [
+    "@flywine93/ngx-autounsubscrb"
+  ]
+}

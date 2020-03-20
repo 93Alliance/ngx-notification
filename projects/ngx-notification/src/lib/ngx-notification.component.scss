@@ -1,0 +1,89 @@
+
+$mat-shadow-key-umbra-opacity: 0.2 !default;
+$mat-shadow-key-penumbra-opacity: 0.14 !default;
+$mat-shadow-ambient-shadow-opacity: 0.12 !default;
+
+@mixin shadow-4dp() {
+    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, $mat-shadow-key-penumbra-opacity),
+      0 1px 10px 0 rgba(0, 0, 0, $mat-shadow-ambient-shadow-opacity),
+      0 2px 4px -1px rgba(0, 0, 0, $mat-shadow-key-umbra-opacity);
+}
+
+.notifications {
+    position: fixed;
+    z-index: 999999;
+    min-width: 400px;
+    max-width: 400px;
+    // 每条通知信息的容器
+    .notification {
+        margin: 5px; // 外边缘距离
+        border-radius: 4px; // 增加倒角
+        overflow: hidden; // 强制关闭滚动条，否则会影响布局。
+        color: #fff;
+        // 通知消息的标题容器
+        .title {
+            padding-left: 10px; // 左内缩距离
+            display: flex;
+            flex-direction: row;
+            box-sizing: border-box;
+            place-content: center space-between;
+            align-items: center;
+
+            .close-btn {
+                display: inline-block;                 
+                cursor: pointer;
+                padding: 10px;
+                svg { fill: currentColor; }
+            }
+        }
+        // 每条消息内容容器
+        .message {
+            padding: 10px; // 内缩距离
+            overflow-y: auto; // y方向滚动条开启
+        }
+
+        &.shadow {
+            @include shadow-4dp();
+        }
+    }
+
+    // 下面是设定位置的class
+    &.top {
+        top: 0;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    &.bottom {
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    &.left-top {
+        top: 0;
+        left: 0;
+    }
+    &.left-bottom {
+        bottom: 0;
+        left: 0;
+    }
+    &.right-top {
+        top: 0;
+        right: 0;
+    }
+    &.right-bottom {
+        bottom: 0;
+        right: 0;
+    }
+}
+
+// 当屏幕小于600px时调整宽度
+@media only screen and (max-width: 600px) {
+    .notifications {
+        min-width: 85vw;
+        max-width: 85vw;
+    }
+}

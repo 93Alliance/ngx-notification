@@ -1,0 +1,34 @@
+{
+  "name": "@flywine93/ngx-notification",
+  "version": "0.0.1",
+  "dependencies": {
+    "@flywine93/ngx-autounsubscrb": "*"
+  },
+  "peerDependencies": {
+    "@angular/common": "*",
+    "@angular/core": "*",
+    "@angular/animations": "*"
+  },
+  "description": "Angular 2+ message notification component.",
+  "main": "karma.conf.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/93Alliance/ngx-notification.git"
+  },
+  "keywords": [
+    "angular",
+    "angular notification",
+    "angular notify",
+    "notification",
+    "message notification"
+  ],
+  "author": "flywine",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/93Alliance/ngx-notification/issues"
+  },
+  "homepage": "https://github.com/93Alliance/ngx-notification#readme"
+}
