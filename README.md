@@ -2,7 +2,7 @@
 
 It is a flexible and usable component.
 
-![](./src/assets/images/demo1.gif) 
+![](https://github.com/93Alliance/ngx-notification/blob/master/src/assets/images/demo1.gif?raw=true) 
 
 ## Demo
 
@@ -158,11 +158,11 @@ There are now two themes available, `material theme` and `darkWindstorm theme`.
 
 1. **material theme**
 
-![](./src/assets/images/demo2.png) 
+![](https://github.com/93Alliance/ngx-notification/blob/master/src/assets/images/demo2.png?raw=true) 
 
 2.**darkWindstorm theme**
 
-![](./src/assets/images/demo3.png) 
+![](https://github.com/93Alliance/ngx-notification/blob/master/src/assets/images/demo3.png?raw=true) 
 
 ### Component Usage
 
@@ -212,7 +212,7 @@ export class AppComponent {
   }
 }
 ```
-![](./src/assets/images/demo4.gif) 
+![](https://github.com/93Alliance/ngx-notification/blob/master/src/assets/images/demo4.gif?raw=true) 
 
 2.change theme
 

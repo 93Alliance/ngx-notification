@@ -23,7 +23,8 @@ export class AppComponent {
   }
 
   changeOptions(): void  {
-    this.options.position = 'b';
+    this.options = {position: 'b'};
+    console.log(this.options);
     this.notification.update();
   }
 

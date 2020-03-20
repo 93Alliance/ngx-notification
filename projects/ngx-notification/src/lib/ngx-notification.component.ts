@@ -96,6 +96,7 @@ export class NgxNotificationComponent implements OnInit, OnDestroy, OnChanges {
   update(): void {
     this.options = this.options || {};
     const newOptions = deepCopyJson(this.theme);
+    mergeJson(this.options, defaultNotifyOptions);
     mergeJson(newOptions, this.options);
     this.options = newOptions;
     this.isR2L = this.isRight2Left();
