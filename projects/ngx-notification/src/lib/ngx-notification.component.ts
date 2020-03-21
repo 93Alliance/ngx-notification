@@ -36,8 +36,6 @@ export class NgxNotificationComponent implements OnInit, OnDestroy, OnChanges {
 
   private subscription$$: Subscription;
   private init = false;
-  // tslint:disable-next-line:variable-name
-  private theme_: any;
 
   //#endregion
   // <<<-------------------------------------------------------------------------------------------

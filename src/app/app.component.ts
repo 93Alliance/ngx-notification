@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { NgxNotificationService, NotificationType, NotificationThemes, NotifyOptions, mergeJson, deepCopyJson } from 'ngx-notification';
+import { NgxNotificationService,
+  NotificationType, NotificationThemes,
+  NotifyOptions, mergeJson, deepCopyJson } from '@flywine93/ngx-notification';
 
 @Component({
   selector: 'app-root',
