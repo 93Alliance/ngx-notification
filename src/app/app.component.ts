@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NgxNotificationService,
   NotificationType, NotificationThemes,
-  NotifyOptions, mergeJson, deepCopyJson } from '@flywine93/ngx-notification';
+  NotifyOptions, ThemeName, NotificationPosition } from '@flywine93/ngx-notification';
 
 @Component({
   selector: 'app-root',
@@ -10,23 +10,33 @@ import { NgxNotificationService,
 })
 export class AppComponent {
 
-  theme = NotificationThemes.material;
+  theme = ThemeName.MATERILA;
   options: NotifyOptions = {position: 'rt'};
 
   constructor(private notification: NgxNotificationService) {
   }
 
-  chanegTheme(): void {
-    if (this.theme === NotificationThemes.material) {
-      this.theme = NotificationThemes.darkWindstorm;
-    } else {
-      this.theme = NotificationThemes.material;
+  changeMaterialTheme(): void {
+    if (this.theme !== ThemeName.MATERILA) {
+      this.theme = ThemeName.MATERILA;
     }
   }
 
+  changeDarkWindstorm(): void {
+    if (this.theme !== ThemeName.DARK_WINDSTORM) {
+      this.theme = ThemeName.DARK_WINDSTORM;
+    }
+  }
+
+  // change options by property
   changeOptions(): void  {
     this.options = {position: 'b'};
     this.notification.update();
+  }
+
+  // change options by service
+  changePosition(dir: NotificationPosition): void {
+    this.notification.changeOptions({position: dir});
   }
 
   sendInfo() {

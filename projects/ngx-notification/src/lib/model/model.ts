@@ -55,6 +55,11 @@ export const defaultNotifyOptions: NotifyOptions = {
     }
 };
 
+export enum ThemeName {
+    DARK_WINDSTORM = 'darkWindstorm',
+    MATERILA = 'material'
+}
+
 export const NotificationThemes = {
     darkWindstorm: {
         title: {

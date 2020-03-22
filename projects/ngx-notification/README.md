@@ -184,10 +184,10 @@ There are now two themes available, `material theme` and `darkWindstorm theme`.
 import {
   NgxNotificationService,
   NotificationType,
-  NotificationThemes, NotifyOptions } from '@flywine93/ngx-notification';
+  NotificationThemes, NotifyOptions, ThemeName } from '@flywine93/ngx-notification';
 export class AppComponent {
 
-  theme = NotificationThemes.material;
+  theme = ThemeName.MATERILA;
   options: NotifyOptions;
 
   constructor(private notification: NgxNotificationService) {
@@ -226,10 +226,12 @@ export class AppComponent {
 import {
   NgxNotificationService,
   NotificationType,
-  NotificationThemes, NotifyOptions } from 'n@flywine93/ngx-notification';
+  NotificationThemes,
+  NotifyOptions,
+  ThemeName } from '@flywine93/ngx-notification';
 export class AppComponent {
 
-  theme = NotificationThemes.darkWindstorm;
+  theme = ThemeName.DARK_WINDSTORM;
   options: NotifyOptions;
 
   constructor(private notification: NgxNotificationService) {
@@ -246,7 +248,7 @@ eg.
 ```
 export class AppComponent {
 
-  theme = NotificationThemes.material;
+  theme = ThemeName.MATERILA;
   options: NotifyOptions;
 
   constructor(private notification: NgxNotificationService) {
@@ -287,6 +289,8 @@ The custom configuration will override the default configuration.
 	- message: text
 	- timeout: delay closing time，If it is 0ms, it will not close actively, it needs to close manually.
 - **update** --- Forced update options, eg. change position.
+- **changeTheme** --- change notification box theme
+- **changeOptions** --- change notification options then update
 
 #### Usage
 
@@ -294,10 +298,13 @@ The custom configuration will override the default configuration.
 
 You need inject `NgxNotificationService` service.
 ```
-import { NgxNotificationService, NotificationType } from 'ngx-notification';
+import {
+  NgxNotificationService,
+  NotificationType,
+  ThemeName } from '@flywine93/ngx-notification';
 export class AppComponent {
 
-  theme = NotificationThemes.material;
+  theme = ThemeName.MATERILA;
   options: NotifyOptions;
 
   constructor(private notification: NgxNotificationService) {
@@ -314,7 +321,7 @@ export class AppComponent {
 ```
 export class AppComponent {
 
-  theme = NotificationThemes.material;
+  theme = ThemeName.MATERILA;
   options: NotifyOptions = {position: 'rt'};
 
   constructor(private notification: NgxNotificationService) {
@@ -328,10 +335,24 @@ export class AppComponent {
 ```
 If the update is not forced, it will be updated at the next change.
 
+3.change options or theme by service
+
+```
+changePosition(dir: NotificationPosition): void {
+  this.notification.changeOptions({position: dir});
+}
+```
+```
+changeTheme(theme: ThemeName): void {
+  this.notification.changeTheme(theme);
+}
+
+```
+
 ## TODO
 
-- add update options by service
-- add change theme by service
+- [x] add update options by service
+- [x] add change theme by service
 
 ### License
 

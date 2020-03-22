@@ -2,7 +2,8 @@ import { Component, OnInit, OnDestroy, Input,
   ChangeDetectorRef, ChangeDetectionStrategy, OnChanges, SimpleChanges, NgZone } from '@angular/core';
 import { r2l, l2r } from './model/animations';
 import { AutoUnsubscrb } from '@flywine93/ngx-autounsubscrb';
-import { NotifyOptions, defaultNotifyOptions, NotificationThemes, NotificationType, Notification } from './model/model';
+import { NotifyOptions, defaultNotifyOptions,
+  NotificationThemes, NotificationType, Notification, ThemeName } from './model/model';
 import { Subscription } from 'rxjs';
 import { NgxNotificationService } from './ngx-notification.service';
 import { mergeJson } from './model/json-utils';
@@ -24,7 +25,7 @@ export class NgxNotificationComponent implements OnInit, OnDestroy, OnChanges {
   //#region 开放成员
 
   @Input() options: NotifyOptions;
-  @Input() theme = NotificationThemes.material;
+  @Input() theme = ThemeName.MATERILA;
   notifications: Notification[] = [];
   isR2L: boolean;
 
@@ -53,6 +54,10 @@ export class NgxNotificationComponent implements OnInit, OnDestroy, OnChanges {
       if (typeof notification === 'string') {
         if (notification === 'update') {
           this.update();
+        } else if (notification.includes('changeTheme:')) {
+          this.changeTheme(notification);
+        } else if (notification.includes('changeOptions:')) {
+          this.changeOptions(notification);
         }
       } else {
         this.addNotification(notification);
@@ -60,7 +65,7 @@ export class NgxNotificationComponent implements OnInit, OnDestroy, OnChanges {
     });
     this.options = this.options || {};
     mergeJson(this.options, defaultNotifyOptions);
-    mergeJson(this.options, this.theme);
+    mergeJson(this.options, NotificationThemes[this.theme]);
     this.isR2L = this.isRight2Left();
     this.init = true;
   }
@@ -68,7 +73,7 @@ export class NgxNotificationComponent implements OnInit, OnDestroy, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (this.init) {
       if (changes.hasOwnProperty('theme')) {
-        this.theme = changes.theme.currentValue;
+        this.theme = this.str2ThemeName(changes.theme.currentValue);
         this.update();
       }
       if (changes.hasOwnProperty('options')) {
@@ -93,7 +98,7 @@ export class NgxNotificationComponent implements OnInit, OnDestroy, OnChanges {
 
   update(): void {
     this.options = this.options || {};
-    const newOptions = deepCopyJson(this.theme);
+    const newOptions = deepCopyJson(NotificationThemes[this.theme]);
     mergeJson(this.options, defaultNotifyOptions);
     mergeJson(newOptions, this.options);
     this.options = newOptions;
@@ -263,6 +268,31 @@ export class NgxNotificationComponent implements OnInit, OnDestroy, OnChanges {
           break;
       }
       return color;
+  }
+
+  private changeTheme(cmd: string): void {
+    const parts = cmd.split(':');
+    this.theme = this.str2ThemeName(parts[1]);
+    this.update();
+  }
+
+  private changeOptions(cmd: string): void {
+    cmd = cmd.slice(14);
+    const newOptions = JSON.parse(cmd);
+    mergeJson(newOptions, this.options);
+    this.options = newOptions;
+    this.update();
+  }
+
+  private str2ThemeName(str: string): ThemeName {
+    switch (str) {
+      case ThemeName.MATERILA:
+        return ThemeName.MATERILA;
+      case ThemeName.DARK_WINDSTORM:
+        return ThemeName.DARK_WINDSTORM;
+      default:
+        break;
+    }
   }
 
   //#endregion

@@ -1,15 +1,31 @@
-<br>
+<div style="text-align: center;" >
+    <br>
+    <p style="font-size: 20px;">Ngx Notification</p>
 
-<p>Test</p>
+    <br>
+    <p>Notification Type</p>
+    <button mat-raised-button color="basic" (click)="sendInfo()">Info</button>
+    <button mat-raised-button color="primary" (click)="sendSuccess()">Success</button>
+    <button mat-raised-button color="accent" (click)="sendWarning()">Warning</button>
+    <button mat-raised-button color="warn" (click)="sendError()">Error</button>
+    <button mat-raised-button color="warn" (click)="loremIpsum()">Lorem Ipsum</button>
 
-<button mat-raised-button color="basic" (click)="sendInfo()">Info</button>
-<button mat-raised-button color="primary" (click)="sendSuccess()">Success</button>
-<button mat-raised-button color="accent" (click)="sendWarning()">Warning</button>
-<button mat-raised-button color="warn" (click)="sendError()">Error</button>
-<button mat-raised-button color="warn" (click)="loremIpsum()">Lorem Ipsum</button>
-<button mat-raised-button color="warn" (click)="chanegTheme()">Change Theme</button>
-<button mat-raised-button color="warn" (click)="changeOptions()">Change Position</button>
+    <br>
+    <p style="margin-top: 20px;">Theme</p>
+    <button mat-raised-button color="primary" (click)="changeMaterialTheme()">Material</button>
+    <button mat-raised-button color="primary" (click)="changeDarkWindstorm()">Dark Windstorm</button>
+
+    <br>
+    <p style="margin-top: 20px;">Position</p>
+    <button mat-raised-button color="primary" (click)="changePosition('t')">Top</button>
+    <button mat-raised-button color="primary" (click)="changePosition('b')">Bottom</button>
+    <button mat-raised-button color="primary" (click)="changePosition('lt')">Left Top</button>
+    <button mat-raised-button color="primary" (click)="changePosition('lb')">Left Bottom</button>
+    <button mat-raised-button color="primary" (click)="changePosition('rt')">Right Top</button>
+    <button mat-raised-button color="primary" (click)="changePosition('rb')">Right Bottom</button>
+</div>
+
+
 
 
 <ngx-notification [theme]="theme" [options]="options"></ngx-notification>
-

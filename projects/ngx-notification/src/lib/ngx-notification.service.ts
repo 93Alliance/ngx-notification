@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { Notification, NotificationType } from './model/model';
+import { Notification, NotificationType, ThemeName, NotifyOptions } from './model/model';
 
 @Injectable({
   providedIn: 'root'
@@ -32,9 +32,15 @@ export class NgxNotificationService {
       new Notification(this.idx++, tmpType, title, message, timeout));
   }
 
-  // TODO: add update options
   update(): void {
     this.subjectBus$.next('update');
   }
 
+  changeTheme(themeName: ThemeName): void {
+    this.subjectBus$.next(`changeTheme:${themeName}`);
+  }
+
+  changeOptions(options: NotifyOptions): void {
+    this.subjectBus$.next(`changeOptions:${JSON.stringify(options)}`);
+  }
 }
